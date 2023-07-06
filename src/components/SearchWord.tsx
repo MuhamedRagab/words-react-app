@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from "react";
-import { GetWordData, WordData } from "../api/getWordData";
+import { GetWordData } from "../api/getWordData";
 
 const SearchWord = ({ setWordData }) => {
   const { mutate } = GetWordData(setWordData);
