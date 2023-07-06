@@ -1,11 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import React from "react";
 import { GetWordData, WordData } from "../api/getWordData";
 
-const SearchWord = ({
-  setWordData,
-}: {
-  setWordData: React.Dispatch<React.SetStateAction<WordData[]>>;
-}) => {
+const SearchWord = ({ setWordData }) => {
   const { mutate } = GetWordData(setWordData);
 
   const searchWord = (e: React.FormEvent<HTMLFormElement>) => {
