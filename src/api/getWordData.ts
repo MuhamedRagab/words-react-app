@@ -40,7 +40,7 @@ interface License {
 export const GetWordData = (
   setWordData: React.Dispatch<React.SetStateAction<TWordDataApi>>
 ) => {
-  const { mutate } = useMutation<TWordDataApi, unknown, string>({
+  const { mutate, isLoading } = useMutation<TWordDataApi, unknown, string>({
     mutationKey: "word",
     mutationFn: async (word: string) => {
       const { data } = await axiosInstance.get<TWordDataApi>(word);
@@ -49,11 +49,11 @@ export const GetWordData = (
     onSuccess: (data) => {
       setWordData(data);
     },
-    onError: (error: unknown) => {
+    onError: (error) => {
       console.error(error);
       alert("Word not found");
     },
   });
 
-  return { mutate };
+  return { mutate, isLoading };
 };

@@ -3,7 +3,7 @@ import React from "react";
 import { GetWordData } from "../api/getWordData";
 
 const SearchWord = ({ setWordData }) => {
-  const { mutate } = GetWordData(setWordData);
+  const { mutate, isLoading } = GetWordData(setWordData);
 
   const searchWord = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,9 +30,12 @@ const SearchWord = ({ setWordData }) => {
           />
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-2 rounded-lg w-full"
+            // className with disabled is not working
+            className={`bg-blue-500 hover:bg-blue-600 text-white font-bold p-2 rounded-lg w-full
+               ${isLoading ? "cursor-not-allowed opacity-50" : ""}`}
+            disabled={isLoading}
           >
-            Search
+            {isLoading ? "Loading..." : "Search"}
           </button>
         </form>
       </div>
